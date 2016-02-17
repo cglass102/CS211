@@ -1,0 +1,13 @@
+#include<iostream>
+using namespace std;
+unsigned long long fib(int n){
+    static unsigned long long f[100]={0,1,1};
+    if(f[n] != 0)
+       return f[n]; 
+    return f[n]=fib(n-1)+fib(n-2);
+}
+int main(){
+   for(int i=1; i<100; i++)
+      cout<<i<<" "<<fib(i)<<endl;
+   return 0;
+}
