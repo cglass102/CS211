@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main () {
+	long i=1;
+	while (i>0){
+		long j, x, y;
+		j=i*i;
+		x=j%10;
+		y=(j/10)%10;
+		if (x%2!=0 && y%2!=0){
+			cout<<j;
+			break;
+		}
+		i++;
+		
+	}
+	return 0;
+}
