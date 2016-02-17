@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+bool equivilent(int a[], int b[], int n){
+   int shift=0;
+   while (a[0]!=b[shift]) shift++;
+   for (int i=0; i<n; i++){
+      if (a[i]!=b[(i+shift)%n]) return false;
+   }
+   return true;
+}
+int main(){
+   int a[]={1, 2, 3, 4, 5};
+   int b[]={3, 4, 5, 1, 2};
+   bool testresult;
+   testresult = equivilent(a, b, 5);
+   if (testresult) cout<<"These arrays are shift equivalent\n";
+   else cout<<"These arrays are not shift equivalent\n";
+   return 0;
+}
