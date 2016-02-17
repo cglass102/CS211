@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int main () {
+   int mp[3][3]= {0,2,1,0,2,1,1,2,0};
+   int wp[3][3]= {2,1,0,0,1,2,2,0,1};
+   int q[3], c=0, i, count=0;
+   q[0]=0;
+   while (c<=3){
+      c++;
+      q[c]=-1;
+      //print
+      if (c==3) {
+         count++;
+         cout<<"This is solution number: " <<count <<endl;
+         for (i=0; i<3; i++) cout<<q[i] <<", ";
+         cout<<endl;
+      }
+      while (q[c]<=3){
+         q[c]++;
+         //backtrack
+         if (q[c]==3){
+            c--;
+            if (c==-1) return 0;
+            continue;
+         }
+         int check=0;
+         for (i=0; i<c; i++){
+            if(q[c]==q[i]) check++;
+            if ((mp[i][q[c]]<mp[i][q[i]]) && (wp[q[c]][i]<wp[q[c]][c])) 
+               check++;
+            if ((wp[q[i]][c]<wp[q[i]][i]) && (mp[c][q[i]]<mp[c][q[c]])) 
+               check++;
+         }
+         if (check==0) break;
+      }
+   }   
+   return 0;
+}
