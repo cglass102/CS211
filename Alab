@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+int main () {
+	cout<< "\tTable of Perfect Squares:\n";
+	cout<<"\t" <<"Number " <<"\t" <<"Square "<<"\t" <<"values \n"; 
+	for (int i=1; i<51; i++){
+		cout<<"\t" <<i <<"\t" <<i <<"x" <<i <<"\t" <<i*i;
+		cout<<endl;
+	}
+	return 0;
+}
