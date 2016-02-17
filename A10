@@ -1,0 +1,63 @@
+include <iostream>
+using namespace std;
+int main (){
+   int i, j, k, l;
+   int q[]={0,4,7,5,2,6,1,3};
+   typedef char box[5][7];
+   box bb, wb, wq, bq, *board[8][8];
+
+   //fill in
+   for (i=0; i<5; i++){
+      for (j=0; j<7; j++){
+         wb[i][j]=' ';
+         bb[i][j]=char(219);
+         wq[i][j]=' ';
+         bq[i][j]=char(219);
+      }
+   }
+   //create in bq and wq
+   for (i=1; i<4; i++){
+      for (j=1; j<6; j++){
+         if(j==1||j==3||j==5||i==3) wq[i][j]=char(219);
+         if(j==1||j==3||j==5||i==3) bq[i][j]=' ';
+      }
+   }
+
+   //fill board with pointers
+   for (i=0; i<8; i++){
+      for (j=0; j<8; j++){
+         if ((i+j)%2==0) board[i][j]=&wb;
+         if ((i+j)%2!=0) board[i][j]=&bb;
+      }
+   }
+   for (i=0; i<8; i++){
+      for (j=0; j<8; j++){   
+         if (i==q[j]){
+            if ((i+j)%2==0) board[i][j]=&wq;
+            else  board[i][j]=&bq;
+      }   
+         }
+   }   
+   //print upper border
+   cout<<"  ";   
+   for (i=0; i<(7*8); i++) cout<<'_';
+   cout<<endl;
+   
+   //print board
+   for (i=0; i<8; i++){
+         for (k=0; k<5; k++){
+         cout<<"  "<<char(179); //left border
+         for (j=0; j<8; j++){
+            for (l=0;l<7; l++){
+               cout<< (*board[i][j])[k][l];
+            }
+         }
+         cout<<char(179) <<endl; //right border
+      }
+   }
+   //lower border
+   cout<<"  ";
+   for (i=0; i<7*8; i++) cout<<'_';
+   cout<<endl;
+   return 0;
+}
